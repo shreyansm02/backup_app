@@ -56,3 +56,8 @@ def get_owner_id(db: Session):
     backup_job = db.query(BackupJob).order_by(BackupJob.id.desc()).first()
     return backup_job.owner_id if backup_job else 0
 
+def get_backup_jobs(db: Session):
+    try:
+        return db.query(BackupJob).all()
+    except Exception as e:
+        raise Exception(f"Error retrieving backup jobs: {e}")

@@ -1,5 +1,5 @@
 from typing import Optional
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text, Float
 from sqlalchemy.orm import relationship
 from .database import Base
 
@@ -23,6 +23,7 @@ class BackupJob(Base):
     end_time = Column(DateTime)
     error_message = Column(String) 
     owner_id = Column(Integer, ForeignKey('users.id'))
+    progress = Column(Float, default=0.0) 
     owner = relationship("User", back_populates="backup_jobs")
 
 class Configuration(Base):

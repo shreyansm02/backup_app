@@ -31,6 +31,7 @@ class BackupJobBase(BaseModel):
     target_path: str
     status: str
     owner_id: int
+    progress: float = 0.0
 
 class  BackupJobCreate(BackupJobBase):
     pass
